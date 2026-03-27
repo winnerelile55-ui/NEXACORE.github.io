@@ -117,7 +117,7 @@ align-items:center;
 
 text-align:center;
 
-padding:120px 20px;
+padding:24px 24px;
 
 background:
 
@@ -126,7 +126,7 @@ rgba(31,122,58,.75),
 rgba(20,90,42,.75)
 ),
 
-url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854");
+url("https://images.unsplash.com/photo-1464226184884-fa280b87c399");
 
 background-size:cover;
 
@@ -454,7 +454,9 @@ padding:20px;
 
 <nav>
 
-<div class="logo">Kabini AgroGlobal</div>
+<div class="logo">
+    <img src="YOUR_LOGO_URL_HERE.png" alt="Kabini AgroGlobal " class="logo-img">
+</div>
 
 <ul>
 
@@ -469,8 +471,8 @@ padding:20px;
     <li><a href="receipt.html">receipt</a></li>
     <li><a href="login.html">login</a></li>
     <li><a href="register.html">register</a></li>
-    <li><a href="tracking.html"></a>tracking</li>
-
+    <li><a href="tracking.html">tracking</a></li>
+    <li><a href="orders.html">orders</a></li>
 
 </ul>
 
@@ -608,14 +610,14 @@ padding:20px;
 
 const products=[
 
-{id:1,name:"Organic Rice",price:15000,img:"https://images.unsplash.com/photo-1586201375761-83865001e31c"},
-{id:2,name:"organic apples",price:4000,img:"https://images.unsplash.com/photo-1567306226416-28f0efdc88ce"},
-{id:3,name:"cows",price:8000,img:"NEXACORE CANVAS/tmp-1589792989118857216-6E9BT6.jpg"},
-{id:4,name:"brevages",price:5000,img:"https://images.unsplash.com/photo-1517959105821-eaf2591984ca"},
-{id:5,name:"Broilers",price:4000,img:"NEXACORE CANVAS/0072da0230f880e7683470593197a718.jpg"},
-{id:6,name:"Fresh Tomatoes",price:4000,img:"NEXACORE CANVAS/285d7a8f99671955dc581f66d5894490.jpg"},
-{id:7,name:"Goats",price:4000,img:"NEXACORE CANVAS/tmp-1589792989118857216-JF1KY8.jpg"},
-{id:8,name:"Eggs",price:4000,img:"NEXACORE CANVAS/tmp-1589792989118857216-DFWW4g.jpg"},
+{id:1,name:"KABINI AGROGLOBAL",price:100000,img:"NEXACORE CANVAS/IMG-20260323-WA0001.jpg"},
+{id:2,name:"KABINI TABLEWATER",price:4000,img:"NEXACORE CANVAS/IMG-20260323-WA0002.jpg"},
+{id:3,name:"KABINI GROUNDNUTOIL",price:20000,img:"NEXACORE CANVAS/IMG-20260325-WA0027.jpg"},
+{id:4,name:"KABINI ONLINE STORE",price:50000,img:"NEXACORE CANVAS/IMG-20260325-WA0028.jpg"},
+{id:5,name:"CATTLES",price:2000000,img:"NEXACORE CANVAS/2b7cf4530d8c7d61d874abe14bc3b3ed.jpg"},
+{id:6,name:"GOATS",price:100000,img:"NEXACORE CANVAS/5b538c0521fb05c889c0239139e561da.jpg"},
+{id:7,name:"LAYERS",price:30000,img:"NEXACORE CANVAS/4d859011438527d70f5236717eff0cd0.jpg"},
+{id:8,name:"TURKEY",price:40000,img:"NEXACORE CANVAS/bffdd7f24d29a966b236b9ff331ea956.jpg"},
 ]
 
 document.getElementById("productsCount").innerText=products.length
