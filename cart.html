@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kabini Cart</title>
+<title>Kabini Global | Cart</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 
 /* ================= ROOT ================= */
-
 :root{
---green:#1F7A3A;
---dark-green:#145A2A;
---gold:#E8A317;
---bg:#F5F7F2;
---glass:rgba(255,255,255,.2);
---radius:20px;
+--green:#0f5f2f;
+--brown:#5c4033;
+--gold:#d4af37;
+--bg:#f7f5f0;
+--card:#fff;
+--radius:16px;
+--shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
 }
 
 body{
@@ -34,7 +35,6 @@ background:var(--bg);
 }
 
 /* ================= NAV ================= */
-
 nav{
 position:fixed;
 top:0;
@@ -42,129 +42,223 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 60px;
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(12px);
-z-index:100;
+padding:15px 20px;
+background:rgba(15,95,47,0.95);
+backdrop-filter:blur(15px);
+color:#fff;
+z-index:1000;
 }
 
-.logo{
-font-weight:700;
-color:var(--green);
-font-size:22px;
+nav img{
+height:40px;
 }
 
-nav ul{
+/* Desktop menu */
+.nav-links{
 display:flex;
-gap:25px;
+gap:20px;
 list-style:none;
 }
 
-nav a{
+.nav-links a{
+color:#fff;
 text-decoration:none;
-color:#333;
+font-weight:600;
 }
 
-/* ================= MAIN ================= */
+/* ================= HAMBURGER ================= */
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+}
 
+.hamburger span{
+width:25px;
+height:3px;
+background:#fff;
+border-radius:5px;
+transition:0.3s;
+}
+
+/* Mobile menu */
+.mobile-menu{
+position:fixed;
+top:0;
+right:-100%;
+width:75%;
+height:100vh;
+background:#fff;
+box-shadow:-10px 0 30px rgba(0,0,0,0.2);
+padding:30px;
+display:flex;
+flex-direction:column;
+gap:20px;
+transition:0.4s;
+z-index:2000;
+}
+
+.mobile-menu a{
+color:var(--green);
+text-decoration:none;
+font-weight:600;
+font-size:18px;
+}
+
+/* ACTIVE MENU */
+.mobile-menu.active{
+right:0;
+}
+
+/* Overlay */
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+opacity:0;
+visibility:hidden;
+transition:0.3s;
+z-index:1500;
+}
+
+.overlay.active{
+opacity:1;
+visibility:visible;
+}
+
+/* Responsive */
+@media(max-width:768px){
+.nav-links{
+display:none;
+}
+
+.hamburger{
+display:flex;
+}
+}
+
+/* ================= LAYOUT ================= */
 .container{
+margin-top:100px;
+padding:15px;
 max-width:1200px;
-margin:120px auto;
-padding:20px;
+margin-inline:auto;
 }
 
-/* ================= CART GRID ================= */
-
-.cart-grid{
+.cart-layout{
 display:grid;
 grid-template-columns:2fr 1fr;
-gap:30px;
+gap:25px;
 }
 
 @media(max-width:900px){
-.cart-grid{
+.cart-layout{
 grid-template-columns:1fr;
 }
 }
 
-/* ================= ITEMS ================= */
-
-.cart-items{
-background:white;
-padding:20px;
+/* ================= CART ITEMS ================= */
+.cart-box{
+background:var(--card);
+padding:15px;
 border-radius:var(--radius);
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+box-shadow:var(--shadow);
 }
 
-.item{
+.cart-item{
 display:flex;
-align-items:center;
-justify-content:space-between;
-margin-bottom:20px;
+gap:15px;
+padding:15px 0;
 border-bottom:1px solid #eee;
-padding-bottom:15px;
+align-items:center;
 }
 
-.item img{
-width:80px;
+.cart-item img{
+width:90px;
+height:90px;
+object-fit:cover;
 border-radius:10px;
 }
 
-.item-info{
+.item-details{
 flex:1;
-margin-left:15px;
 }
 
-.qty{
+.price{
+color:var(--green);
+font-weight:700;
+}
+
+.controls{
 display:flex;
 align-items:center;
 gap:10px;
+margin-top:8px;
 }
 
-.qty button{
-padding:5px 10px;
+.controls button{
+padding:6px 10px;
 border:none;
 background:var(--green);
-color:white;
+color:#fff;
 cursor:pointer;
+border-radius:6px;
+}
+
+.remove{
+background:red;
 }
 
 /* ================= SUMMARY ================= */
-
 .summary{
-background:var(--glass);
-backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(12px);
 padding:20px;
 border-radius:var(--radius);
-border:1px solid rgba(255,255,255,.3);
+box-shadow:var(--shadow);
 }
 
 .summary h3{
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
 .summary p{
-margin:10px 0;
 display:flex;
 justify-content:space-between;
+margin:10px 0;
 }
 
-.btn{
+.checkout-btn{
 width:100%;
-padding:14px;
-margin-top:20px;
+padding:15px;
 border:none;
-border-radius:50px;
+border-radius:12px;
 background:var(--gold);
+font-weight:700;
 cursor:pointer;
-font-weight:600;
+margin-top:15px;
 }
 
-/* EMPTY */
+/* ================= TOAST ================= */
+.toast{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:var(--green);
+color:#fff;
+padding:12px 16px;
+border-radius:10px;
+opacity:0;
+transition:0.3s;
+}
 
-.empty{
-text-align:center;
-padding:50px;
+.toast.show{
+opacity:1;
 }
 
 </style>
@@ -172,27 +266,49 @@ padding:50px;
 
 <body>
 
-<nav>
-<div class="logo">Kabini AgroGlobal</div>
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-<ul>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="product.html">Products</a>
+<a href="cart.html">Cart</a>
+<a href="checkout.html">Checkout</a>
+<a href="order.html">Orders</a>
+
+</div>
+
+<!-- NAV -->
+<nav>
+
+<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/IMG-20260323-WA0001.jpg">
+
+<ul class="nav-links">
 <li><a href="index.html">Home</a></li>
-<li><a href="products.html">Products</a></li>
+<li><a href="product.html">Products</a></li>
 <li><a href="cart.html">Cart</a></li>
 <li><a href="checkout.html">Checkout</a></li>
+<li><a href="order.html">Orders</a></li>
 </ul>
+
+<div class="hamburger" onclick="toggleMenu()">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
 </nav>
 
+<!-- CONTENT -->
 <div class="container">
 
-<h1>Your Cart</h1>
+<h2 style="margin-bottom:15px;">🛒 Your Cart</h2>
 
-<div class="cart-grid">
+<div class="cart-layout">
 
-<!-- ITEMS -->
-<div class="cart-items" id="cartItems"></div>
+<div class="cart-box" id="cartItems"></div>
 
-<!-- SUMMARY -->
 <div class="summary">
 
 <h3>Order Summary</h3>
@@ -201,57 +317,73 @@ padding:50px;
 <p>Shipping <span>₦2000</span></p>
 <p><strong>Total <span id="total">₦0</span></strong></p>
 
-<button class="btn" onclick="checkout()">Proceed to Checkout</button>
+<button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
 
 </div>
 
 </div>
 
 </div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
 
 <script>
 
-/* ================= LOAD CART ================= */
+/* ================= MENU ================= */
+
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("active")
+document.getElementById("overlay").classList.toggle("active")
+}
+
+/* ================= CART ================= */
 
 let cart = JSON.parse(localStorage.getItem("cart")) || []
 
-const container = document.getElementById("cartItems")
+cart = cart.map(item => ({
+...item,
+price: Number(item.price) || 0,
+qty: Number(item.qty) || 1
+}))
+
+const cartBox = document.getElementById("cartItems")
 
 function renderCart(){
 
-container.innerHTML=""
+cartBox.innerHTML = ""
 
 if(cart.length === 0){
-container.innerHTML = `<div class="empty">🛒 Your cart is empty</div>`
+cartBox.innerHTML = `<h3 style="text-align:center;">Your cart is empty</h3>`
 updateTotals()
 return
 }
 
 cart.forEach(item => {
 
-container.innerHTML += `
-
-<div class="item">
+cartBox.innerHTML += `
+<div class="cart-item">
 
 <img src="${item.img}">
 
-<div class="item-info">
-<h4>${item.name}</h4>
-<p>₦${item.price}</p>
-</div>
+<div class="item-details">
 
-<div class="qty">
+<h4>${item.name}</h4>
+
+<p class="price">₦${item.price}</p>
+
+<div class="controls">
 
 <button onclick="decrease(${item.id})">-</button>
 <span>${item.qty}</span>
 <button onclick="increase(${item.id})">+</button>
+<button class="remove" onclick="removeItem(${item.id})">Remove</button>
 
 </div>
 
-<button onclick="removeItem(${item.id})">❌</button>
-
 </div>
 
+</div>
 `
 
 })
@@ -260,21 +392,24 @@ updateTotals()
 
 }
 
-/* ================= QUANTITY ================= */
+/* ================= ACTIONS ================= */
 
 function increase(id){
-cart = cart.map(item => item.id === id ? {...item, qty:item.qty+1} : item)
+cart = cart.map(i => i.id === id ? {...i, qty:i.qty+1} : i)
 save()
+toast("Updated")
 }
 
 function decrease(id){
-cart = cart.map(item => item.id === id ? {...item, qty: Math.max(1,item.qty-1)} : item)
+cart = cart.map(i => i.id === id ? {...i, qty:Math.max(1,i.qty-1)} : i)
 save()
+toast("Updated")
 }
 
 function removeItem(id){
-cart = cart.filter(item => item.id !== id)
+cart = cart.filter(i => i.id !== id)
 save()
+toast("Removed")
 }
 
 function save(){
@@ -286,10 +421,17 @@ renderCart()
 
 function updateTotals(){
 
-let subtotal = cart.reduce((acc,item)=> acc + item.price * item.qty,0)
+let subtotal = 0
+
+cart.forEach(item => {
+subtotal += item.price * item.qty
+})
 
 document.getElementById("subtotal").innerText = "₦" + subtotal
-document.getElementById("total").innerText = "₦" + (subtotal + 2000)
+
+let total = subtotal + 2000
+
+document.getElementById("total").innerText = "₦" + total
 
 }
 
@@ -298,19 +440,29 @@ document.getElementById("total").innerText = "₦" + (subtotal + 2000)
 function checkout(){
 
 if(cart.length === 0){
-alert("Cart is empty")
+toast("Cart is empty")
 return
 }
 
 localStorage.setItem("order", JSON.stringify(cart))
-
 window.location.href = "checkout.html"
 
 }
 
+/* ================= TOAST ================= */
+
+function toast(msg){
+let t = document.getElementById("toast")
+t.innerText = msg
+t.classList.add("show")
+setTimeout(()=>t.classList.remove("show"),2000)
+}
+
+/* INIT */
 renderCart()
 
 </script>
-<script src="shippingCalculator.js"></script>
+
 </body>
+<script src="app.js"></script>
 </html>
