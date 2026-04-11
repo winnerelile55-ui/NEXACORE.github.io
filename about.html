@@ -1,387 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kabini Global | About</title>
 
-<title>Kabini AgroGlobal | About Us</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-/* ================= ROOT ================= */
-
 :root{
---green:#1F7A3A;
---dark-green:#145A2A;
---gold:#E8A317;
---bg:#F5F7F2;
---glass:rgba(255,255,255,.18);
---glass-border:rgba(255,255,255,.3);
---radius:22px;
+--green:#0f5f2f;
+--dark:#081c12;
+--gold:#d4af37;
+--bg:#f4f7f2;
+--glass:rgba(255,255,255,0.12);
+--radius:18px;
+--shadow:0 20px 50px rgba(0,0,0,0.08);
 }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:var(--bg);color:#222;overflow-x:hidden;}
 
-body{
-background:var(--bg);
-color:#333;
-overflow-x:hidden;
-}
-
-/* ================= NAV ================= */
-
+/* NAV */
 nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 60px;
-background:rgba(255,255,255,.65);
-backdrop-filter:blur(18px);
-z-index:100;
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;align-items:center;
+padding:18px 40px;
+background:rgba(15,95,47,.85);
+backdrop-filter:blur(20px);
+z-index:1000;
 }
 
-.logo{
-font-weight:700;
-font-size:24px;
-color:var(--green);
-}
+.logo{display:flex;align-items:center;color:#fff;font-weight:700;gap:10px;}
+.logo img{height:42px;}
 
+nav ul{display:flex;gap:25px;list-style:none;}
+nav a{color:#fff;text-decoration:none;font-weight:500;transition:.3s;}
+nav a:hover{color:var(--gold);}
+
+.menu-toggle{display:none;flex-direction:column;cursor:pointer;}
+.menu-toggle div{width:25px;height:3px;background:#fff;margin:4px;border-radius:4px;}
+
+.overlay{position:fixed;width:100%;height:100%;background:rgba(0,0,0,.6);top:0;left:0;opacity:0;visibility:hidden;transition:.4s;}
+.overlay.active{opacity:1;visibility:visible;}
+
+@media(max-width:900px){
 nav ul{
-display:flex;
-gap:25px;
-list-style:none;
+position:fixed;top:0;right:-100%;height:100vh;width:300px;
+flex-direction:column;padding:100px 25px;
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(30px);
+transition:.4s;
+}
+nav ul.active{right:0;}
+.menu-toggle{display:flex;}
 }
 
-nav a{
-text-decoration:none;
-color:#333;
-transition:.3s;
-}
-
-nav a:hover{
-color:var(--green);
-}
-
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
-min-height:80vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding-top:120px;
-
-background:
-linear-gradient(rgba(31,122,58,.8),rgba(20,90,42,.8)),
-url("NEXACORE CANVAS/IMG-20260323-WA0001.jpg");
-
-background-size:cover;
+min-height:90vh;
+display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+padding:120px 20px;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),url('https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/images/photorealistic-view-african-people-harvesting-vegetables-grains-1.jpg') center/cover;
 color:white;
 }
+.hero h1{font-size:3.5rem;font-weight:700;}
+.hero p{max-width:650px;margin-top:20px;font-size:1.1rem;}
 
-.hero h1{
-font-size:3.5rem;
-background:linear-gradient(90deg,#fff,#E8A317);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+/* SECTION */
+.section{max-width:1200px;margin:100px auto;padding:0 20px;}
 
-.hero p{
-max-width:600px;
-margin-top:20px;
-}
-
-/* ================= SECTIONS ================= */
-
-.section{
-max-width:1200px;
-margin:100px auto;
-padding:0 20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:40px;
-}
-
-/* ================= CARD ================= */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
 
 .card{
-background:white;
-padding:30px;
-border-radius:var(--radius);
-box-shadow:0 15px 40px rgba(0,0,0,.08);
+background:white;padding:25px;border-radius:var(--radius);
+box-shadow:var(--shadow);
 transition:.3s;
 }
+.card:hover{transform:translateY(-6px);}
 
-.card:hover{
-transform:translateY(-8px);
-}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;text-align:center;}
+.stat{background:var(--glass);backdrop-filter:blur(20px);padding:25px;border-radius:var(--radius);}
+.stat h2{color:var(--green);}
 
-/* ================= TEAM ================= */
+/* TEAM */
+.team img{width:100%;height:220px;object-fit:cover;border-radius:12px;}
 
-.team img{
-width:100%;
-border-radius:12px;
-height:220px;
-object-fit:cover;
-}
-
-/* ================= STATS ================= */
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:30px;
-text-align:center;
-}
-
-.stat{
-background:var(--glass);
-backdrop-filter:blur(20px);
-padding:30px;
-border-radius:var(--radius);
-border:1px solid var(--glass-border);
-}
-
-.stat h2{
-color:var(--green);
-}
-
-/* ================= CTA ================= */
-
+/* CTA */
 .cta{
-background:linear-gradient(135deg,var(--green),var(--dark-green));
-color:white;
-padding:80px 20px;
 text-align:center;
-}
-
-.btn{
-margin-top:20px;
-padding:14px 40px;
-border:none;
-border-radius:40px;
-background:var(--gold);
-cursor:pointer;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-background:#111;
+padding:80px 20px;
+background:linear-gradient(135deg,var(--green),var(--dark));
 color:white;
-padding:60px;
 }
+.btn{margin-top:20px;padding:14px 40px;border:none;border-radius:40px;background:var(--gold);cursor:pointer;}
 
-.footer-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:40px;
-}
-
-/* ================= PARTICLES ================= */
-
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-opacity:.25;
-}
+/* FOOTER */
+footer{background:#111;color:white;padding:60px;text-align:center;}
 
 </style>
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
-
-<!-- NAV -->
+<div class="overlay" id="overlay"></div>
 
 <nav>
-<div class="logo">Kabini AgroGlobal</div>
+<div class="logo">
+<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/IMG-20260323-WA0001.jpg">
+<span>KABINI LTD</span>
+</div>
 
-<ul>
+<ul id="navLinks">
 <li><a href="index.html">Home</a></li>
-<li><a href="products.html">Products</a></li>
-<li><a href="about.html">About</a></li>
+<li><a href="product.html">Products</a></li>
 <li><a href="cart.html">Cart</a></li>
 <li><a href="checkout.html">Checkout</a></li>
-<li><a href="flashsales.html">Flash</a></li>
+<li><a href="order.html">Orders</a></li>
+<li><a href="receipt.html">Receipt</a></li>
+<li><a href="invoice.html">Invoice</a></li>
+<li><a href="about.html">About</a></li>
 </ul>
+
+<div class="menu-toggle" id="menuToggle">
+<div></div><div></div><div></div>
+</div>
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
-<h1>About Kabini AgroGlobal</h1>
-<p>We are building Africa’s largest digital agriculture marketplace connecting farmers directly to global buyers.</p>
+<h1>About Kabini Global</h1>
+<p>We are building Africa’s leading digital agriculture ecosystem—seamlessly connecting trusted farmers to buyers and global markets, ensuring premium quality, reliable supply, and effortless trade at every step.</p>
 </section>
 
-<!-- MISSION -->
-
 <section class="section grid">
-
 <div class="card">
 <h2>🌱 Our Mission</h2>
-<p>To empower farmers with digital tools, global reach, and fair pricing systems.</p>
+<p>To deliver premium-quality agricultural products by connecting trusted farmers to global markets through innovation, reliability, and uncompromising standards—ensuring value, consistency, and satisfaction for every customer..</p>
 </div>
 
 <div class="card">
 <h2>🌍 Our Vision</h2>
-<p>To revolutionize agriculture commerce across Africa and beyond using technology.</p>
+<p>To become Africa’s most trusted and leading agricultural brand, setting the standard for quality, innovation, and seamless global trade.</p>
 </div>
-
 </section>
-
-<!-- STATS -->
 
 <section class="section stats">
-
-<div class="stat">
-<h2 id="farmers">0</h2>
-<p>Farmers</p>
-</div>
-
-<div class="stat">
-<h2 id="products">0</h2>
-<p>Products</p>
-</div>
-
-<div class="stat">
-<h2 id="orders">0</h2>
-<p>Orders</p>
-</div>
-
+<div class="stat"><h2 id="farmers">0</h2><p>Farmers</p></div>
+<div class="stat"><h2 id="products">0</h2><p>Products</p></div>
+<div class="stat"><h2 id="orders">0</h2><p>Orders</p></div>
 </section>
 
-<!-- TEAM -->
-
 <section class="section">
-
 <h2 style="text-align:center;margin-bottom:40px;">Our Team</h2>
-
 <div class="grid team">
-
 <div class="card">
-<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/IMG-20260323-WA0001.jpg">
+<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/freepik_create-a-single-portrait-_2757148342.png">
 <h3>Founder</h3>
 <p>Visionary leader behind Kabini.</p>
 </div>
 
 <div class="card">
-<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/IMG-20260323-WA0002.jpg">
+<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/freepik_create-a-single-portrait-_2757157689.png">
 <h3>Operations</h3>
 <p>Ensuring smooth logistics globally.</p>
 </div>
 
 <div class="card">
-<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/IMG-20260325-WA0028.jpg">
+<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/freepik_generate-beautiful-nigeri_2757138044.png">
 <h3>Marketing</h3>
 <p>Driving global reach and branding.</p>
 </div>
-
 </div>
-
 </section>
-
-<!-- CTA -->
 
 <section class="cta">
 <h2>Join the Future of Agriculture</h2>
-<p>Become a farmer or start buying globally today.</p>
-<button class="btn" onclick="location.href='register.html'">Get Started</button>
+<p>Start buying or selling globally today.</p>
+<button class="btn" onclick="location.href='product.html'">Explore Products</button>
 </section>
 
-<!-- FOOTER -->
-
 <footer>
-<div class="footer-grid">
-
-<div>
-<h3>Kabini AgroGlobal</h3>
-<p>Global agriculture marketplace.</p>
-</div>
-
-<div>
-<h4>Marketplace</h4>
-<p>Products</p>
-<p>Farmers</p>
-</div>
-
-<div>
-<h4>Support</h4>
-<p>Help Center</p>
-<p>Shipping</p>
-</div>
-
-</div>
+<p>© 2026 KABINI LTD </p>
+<p>info@kabini.com | +2348107808968</p>
 </footer>
-
-<!-- SCRIPT -->
 
 <script>
 
-/* ================= LIVE STATS ================= */
+const toggle=document.getElementById('menuToggle');
+const nav=document.getElementById('navLinks');
+const overlay=document.getElementById('overlay');
 
-document.getElementById("farmers").innerText = 540
-document.getElementById("products").innerText = 120
-document.getElementById("orders").innerText = 2800
+toggle.onclick=()=>{nav.classList.toggle('active');overlay.classList.toggle('active');}
+overlay.onclick=()=>{nav.classList.remove('active');overlay.classList.remove('active');}
 
-/* ================= PARTICLES ================= */
-
-const canvas=document.getElementById("particles")
-const ctx=canvas.getContext("2d")
-
-canvas.width=innerWidth
-canvas.height=innerHeight
-
-let particles=[]
-
-for(let i=0;i<60;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-vx:Math.random()-.5,
-vy:Math.random()-.5
-})
-}
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-particles.forEach(p=>{
-p.x+=p.vx
-p.y+=p.vy
-
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
-ctx.fillStyle="rgba(31,122,58,.5)"
-ctx.fill()
-})
-
-requestAnimationFrame(animate)
-}
-
-animate()
+// STATS
+document.getElementById("farmers").innerText=540;
+document.getElementById("products").innerText=120;
+document.getElementById("orders").innerText=2800;
 
 </script>
 
 </body>
+<script src="app.js"></script>
 </html>
