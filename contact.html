@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kabini Global | Contact</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+--deep-green:#0f5f2f;
+--gold:#d4af37;
+--bg:#fefcf8;
+--white:#fff;
+--transition:all .4s ease;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:var(--bg);}
+
+/* NAV */
+nav{
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:rgba(15,95,47,.95);
+z-index:1000;
+}
+
+.logo-container{
+display:flex;
+align-items:center;
+gap:10px;
+color:#fff;
+font-weight:600;
+}
+.logo-container img{height:40px;}
+
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+nav a{color:#fff;text-decoration:none;font-weight:600;}
+
+/* HAMBURGER */
+.menu-toggle{display:none;flex-direction:column;cursor:pointer;}
+.menu-toggle div{width:25px;height:3px;background:#fff;margin:4px;}
+
+.overlay{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,.6);
+opacity:0;
+pointer-events:none;
+transition:.3s;
+}
+.overlay.active{opacity:1;pointer-events:auto;}
+
+@media(max-width:768px){
+nav ul{
+position:fixed;
+right:-100%;
+top:0;
+width:270px;
+height:100%;
+flex-direction:column;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(20px);
+padding:80px 20px;
+transition:.4s;
+}
+nav ul.active{right:0;}
+nav ul li{
+background:#fff;
+padding:12px;
+border-radius:10px;
+margin-bottom:10px;
+}
+nav ul li a{color:#000;}
+.menu-toggle{display:flex;}
+}
+
+/* HERO */
+.hero{
+height:50vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url('https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/freepik_generate-beautiful-nigeri_2757138044.png') center/cover;
+}
+
+.hero h1{font-size:40px;}
+
+/* CONTENT */
+.container{
+margin-top:100px;
+padding:30px;
+max-width:1100px;
+margin-left:auto;
+margin-right:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+@media(max-width:768px){
+.container{grid-template-columns:1fr;}
+}
+
+/* CARD */
+.card{
+background:#fff;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* FORM */
+input, textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+textarea{resize:none;height:120px;}
+
+.btn{
+margin-top:15px;
+padding:14px;
+border:none;
+width:100%;
+border-radius:10px;
+background:var(--deep-green);
+color:#fff;
+font-weight:600;
+cursor:pointer;
+}
+
+.btn:hover{background:#0b4723;}
+
+/* CONTACT INFO */
+.info div{
+margin-bottom:15px;
+font-weight:500;
+}
+
+/* FOOTER */
+footer{
+background:var(--deep-green);
+color:#fff;
+text-align:center;
+padding:30px;
+margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- NAV -->
+<nav>
+<div class="logo-container">
+<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/IMG-20260323-WA0001.jpg">
+<span>KABINI LTD</span>
+</div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="product.html">Products</a></li>
+<li><a href="order.html">Orders</a></li>
+<li><a href="cart.html">Cart</a></li>
+<li><a href="checkout.html">Checkout</a></li>
+<li><a href="receipt.html">Receipt</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+<div class="menu-toggle"><div></div><div></div><div></div></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Contact Us</h1>
+</section>
+
+<!-- CONTENT -->
+<div class="container">
+
+<!-- FORM -->
+<div class="card">
+<h2>Send a Message</h2>
+
+<input type="text" id="name" placeholder="Your Name">
+<input type="email" id="email" placeholder="Your Email">
+<textarea id="message" placeholder="Your Message"></textarea>
+
+<button class="btn" onclick="sendMessage()">Send Message</button>
+<button class="btn" onclick="sendWhatsApp()">Chat on WhatsApp</button>
+
+</div>
+
+<!-- INFO -->
+<div class="card info">
+<h2>Contact Info</h2>
+
+<div><i class="fas fa-phone"></i> +234 812345678</div>
+<div><i class="fas fa-envelope"></i> info@kabini.com</div>
+<div><i class="fas fa-location-dot"></i> Abuja, Nigeria</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 Kabini LTD</p>
+</footer>
+
+<script>
+
+/* NAV */
+const toggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('nav ul');
+const overlay=document.querySelector('.overlay');
+
+toggle.onclick=()=>{
+nav.classList.toggle('active');
+overlay.classList.toggle('active');
+}
+
+overlay.onclick=()=>{
+nav.classList.remove('active');
+overlay.classList.remove('active');
+}
+
+/* EMAIL (fallback opens mail app) */
+function sendMessage(){
+const name=document.getElementById("name").value;
+const email=document.getElementById("email").value;
+const msg=document.getElementById("message").value;
+
+if(!name || !email || !msg){
+alert("Please fill all fields");
+return;
+}
+
+window.location.href=`mailto:info@kabini.com?subject=Message from ${name}&body=${msg} (${email})`;
+}
+
+/* WHATSAPP */
+function sendWhatsApp(){
+const name=document.getElementById("name").value || "Customer";
+const msg=document.getElementById("message").value || "Hello, I want to make an enquiry.";
+
+let text=`Hello, my name is ${name}.%0A${msg}`;
+
+window.open(`https://wa.me/2348107808968?text=${text}`,"_blank");
+}
+
+</script>
+
+</body>
+<script src="app.js"></script>
+</html>
