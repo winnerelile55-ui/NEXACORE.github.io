@@ -3,47 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kabini AgroGlobal | Receipt</title>
+<title>Kabini LTD | Receipt</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-
-/* ================= ROOT ================= */
 :root{
---green:#1F7A3A;
---dark-green:#145A2A;
---gold:#E8A317;
---bg:#F5F7F2;
---glass:rgba(255,255,255,.2);
---radius:20px;
+--green:#0f5f2f;
+--dark:#081c12;
+--gold:#d4af37;
+--bg:#f4f7f2;
+--glass:rgba(255,255,255,0.12);
+--radius:18px;
+--shadow:0 25px 60px rgba(0,0,0,0.08);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:var(--bg);color:#222;}
 
-body{
-background:var(--bg);
-}
-
-/* ================= NAV ================= */
+/* NAV */
 nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-padding:20px 60px;
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(10px);
+position:fixed;top:0;width:100%;
+display:flex;justify-content:space-between;align-items:center;
+padding:16px 30px;
+background:rgba(15,95,47,.9);
+backdrop-filter:blur(15px);
+z-index:1000;
 }
 
-.logo{
-font-weight:700;
-color:var(--green);
+.logo{display:flex;align-items:center;color:#fff;font-weight:600;gap:10px;}
+.logo img{height:40px;}
+
+nav ul{display:flex;gap:25px;list-style:none;}
+nav a{color:#fff;text-decoration:none;font-weight:500;}
+
+.menu-toggle{display:none;flex-direction:column;cursor:pointer;}
+.menu-toggle div{width:25px;height:3px;background:#fff;margin:4px;}
+
+.overlay{
+position:fixed;top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.5);
+opacity:0;visibility:hidden;transition:.3s;
+}
+.overlay.active{opacity:1;visibility:visible;}
+
+@media(max-width:768px){
+nav ul{
+position:fixed;top:0;right:-100%;
+height:100vh;width:260px;
+flex-direction:column;padding:100px 20px;
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(25px);
+transition:.4s;
+}
+nav ul.active{right:0;}
+.menu-toggle{display:flex;}
 }
 
-/* ================= RECEIPT ================= */
-
+/* RECEIPT */
 .container{
 max-width:900px;
 margin:120px auto;
@@ -51,148 +69,149 @@ padding:20px;
 }
 
 .receipt{
-background:var(--glass);
-backdrop-filter:blur(18px);
-border-radius:var(--radius);
+background:white;
 padding:30px;
-box-shadow:0 20px 40px rgba(0,0,0,.1);
+border-radius:var(--radius);
+box-shadow:var(--shadow);
 }
 
 .header{
-text-align:center;
-margin-bottom:30px;
+display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;
 }
 
-.header h1{
-color:var(--green);
+.header h2{color:var(--green);} 
+
+.table{
+width:100%;border-collapse:collapse;margin-top:20px;
 }
 
-.success{
-color:green;
-font-weight:600;
-}
-
-/* ================= TABLE ================= */
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-}
-
-th,td{
-padding:12px;
-text-align:center;
-}
-
-th{
-background:var(--green);
-color:white;
+.table th,.table td{
+padding:12px;border-bottom:1px solid #ddd;text-align:left;
 }
 
 .total{
-font-size:20px;
-font-weight:700;
-margin-top:20px;
-text-align:right;
+text-align:right;margin-top:20px;font-size:18px;font-weight:600;
 }
 
-/* ================= BUTTON ================= */
+.actions{
+margin-top:30px;display:flex;gap:15px;flex-wrap:wrap;
+}
 
 .btn{
-margin-top:20px;
-padding:12px 30px;
-background:var(--gold);
-border:none;
-border-radius:50px;
-cursor:pointer;
+padding:12px 25px;border:none;border-radius:30px;
+cursor:pointer;font-weight:600;
 }
 
+.print{background:var(--green);color:white;}
+.whatsapp{background:#25D366;color:white;}
+.clear{background:#e74c3c;color:white;}
+
+footer{
+margin-top:40px;text-align:center;color:#777;
+}
 </style>
 </head>
 
 <body>
 
+<div class="overlay" id="overlay"></div>
+
 <nav>
-<div class="logo">Kabini AgroGlobal</div>
+<div class="logo">
+<img src="https://raw.githubusercontent.com/winnerelile55-ui/KABINI-GLOBAL-FARMS/refs/heads/main/IMG-20260323-WA0001.jpg">
+<span>KABINI LTD</span>
+</div>
+
+<ul id="navLinks">
+<li><a href="index.html">Home</a></li>
+<li><a href="product.html">Products</a></li>
+<li><a href="cart.html">Cart</a></li>
+<li><a href="checkout.html">Checkout</a></li>
+<li><a href="order.html">Orders</a></li>
+<li><a href="receipt.html">Receipt</a></li>
+<li><a href="invoice.html">Invoice</a></li>
+</ul>
+
+<div class="menu-toggle" id="menuToggle">
+<div></div><div></div><div></div>
+</div>
 </nav>
 
 <div class="container">
-
 <div class="receipt">
 
 <div class="header">
-<h1>Payment Successful</h1>
-<p class="success">Your order has been confirmed</p>
+<h2>Order Receipt</h2>
+<p id="date"></p>
 </div>
 
-<h3>Order Details</h3>
-
-<table id="receiptTable">
-<tr>
-<th>Product</th>
-<th>Qty</th>
-<th>Price</th>
-</tr>
+<table class="table" id="table">
+<tr><th>Product</th><th>Qty</th><th>Price</th></tr>
 </table>
 
 <div class="total" id="total">Total: ₦0</div>
 
-<button class="btn" onclick="goHome()">Back to Home</button>
-
+<div class="actions">
+<button class="btn print" onclick="window.print()">Print</button>
+<button class="btn whatsapp" onclick="sendWhatsApp()">Send via WhatsApp</button>
+<button class="btn clear" onclick="clearCart()">Clear Cart</button>
 </div>
 
 </div>
+</div>
+
+<footer>
+<p>© 2026 Kabini LTD</p>
+</footer>
 
 <script>
 
-/* ================= LOAD CART ================= */
+// NAV
+const toggle=document.getElementById('menuToggle');
+const nav=document.getElementById('navLinks');
+const overlay=document.getElementById('overlay');
 
-let cart = JSON.parse(localStorage.getItem("cart")) || []
-let table = document.getElementById("receiptTable")
-let total = 0
+toggle.onclick=()=>{nav.classList.toggle('active');overlay.classList.toggle('active');}
+overlay.onclick=()=>{nav.classList.remove('active');overlay.classList.remove('active');}
+
+// DATE
+document.getElementById("date").innerText=new Date().toLocaleString();
+
+// LOAD CART
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+const table=document.getElementById("table");
+let total=0;
 
 cart.forEach(item=>{
-let row = document.createElement("tr")
-
-row.innerHTML = `
+let row=`<tr>
 <td>${item.name}</td>
 <td>${item.qty}</td>
-<td>₦${item.price * item.qty}</td>
-`
+<td>₦${item.price*item.qty}</td>
+</tr>`;
+table.innerHTML+=row;
+total+=item.price*item.qty;
+});
 
-table.appendChild(row)
+document.getElementById("total").innerText="Total: ₦"+total;
 
-total += item.price * item.qty
-})
+// WHATSAPP
+function sendWhatsApp(){
+let message="Order Receipt:%0A";
+cart.forEach(i=>{
+message+=`${i.name} x${i.qty} - ₦${i.price*i.qty}%0A`;
+});
+message+=`Total: ₦${total}`;
+window.open(`https://wa.me/2348107808968?text=${message}`,'_blank');
+}
 
-document.getElementById("total").innerText = "Total: ₦" + total
-
-/* ================= SAVE ORDER ================= */
-
-let orders = JSON.parse(localStorage.getItem("orders")) || []
-
-orders.push({
-id: Date.now(),
-items: cart,
-total: total,
-date: new Date().toLocaleString(),
-status: "Processing"
-})
-
-localStorage.setItem("orders", JSON.stringify(orders))
-
-/* ================= CLEAR CART ================= */
-
-localStorage.removeItem("cart")
-
-/* ================= NAV ================= */
-
-function goHome(){
-window.location.href="index.html"
+// CLEAR CART
+function clearCart(){
+localStorage.removeItem("cart");
+location.reload();
 }
 
 </script>
 
 </body>
+<script src="app.js"></script>
 </html>
