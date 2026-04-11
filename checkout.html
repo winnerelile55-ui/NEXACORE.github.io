@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Kabini Checkout</title>
+<title>Kabini Global | Checkout</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* ================= ROOT ================= */
-
 :root{
---green:#1F7A3A;
---dark-green:#145A2A;
---gold:#E8A317;
---bg:#F5F7F2;
---glass:rgba(255,255,255,.2);
---radius:20px;
+--green:#0f5f2f;
+--gold:#d4af37;
+--bg:#f7f5f0;
+--card:#fff;
+--radius:16px;
+--shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
 }
 
 body{
@@ -34,7 +32,6 @@ background:var(--bg);
 }
 
 /* ================= NAV ================= */
-
 nav{
 position:fixed;
 top:0;
@@ -42,93 +39,78 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 60px;
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(12px);
-z-index:100;
-}
-
-.logo{
-font-weight:700;
-color:var(--green);
-font-size:22px;
-}
-
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
+padding:15px 20px;
+background:rgba(15,95,47,0.95);
+color:#fff;
+z-index:1000;
 }
 
 nav a{
+color:#fff;
 text-decoration:none;
-color:#333;
+font-weight:600;
+margin-left:15px;
 }
 
-/* ================= MAIN ================= */
-
+/* ================= LAYOUT ================= */
 .container{
-max-width:1200px;
-margin:120px auto;
-padding:20px;
+max-width:1100px;
+margin:100px auto;
+padding:15px;
 }
 
-.checkout-grid{
+.grid{
 display:grid;
 grid-template-columns:2fr 1fr;
-gap:30px;
+gap:25px;
 }
 
 @media(max-width:900px){
-.checkout-grid{
+.grid{
 grid-template-columns:1fr;
 }
 }
 
 /* ================= FORM ================= */
-
 .form-box{
-background:white;
-padding:25px;
+background:var(--card);
+padding:20px;
 border-radius:var(--radius);
-box-shadow:0 10px 30px rgba(0,0,0,.08);
+box-shadow:var(--shadow);
 }
 
 .form-box h2{
-margin-bottom:20px;
-}
-
-.input{
 margin-bottom:15px;
 }
 
-.input input, .input textarea{
+.input{
+margin-bottom:12px;
+}
+
+.input input,
+.input textarea,
+select{
 width:100%;
 padding:12px;
-border:1px solid #ccc;
 border-radius:8px;
+border:1px solid #ccc;
 }
 
 textarea{
-resize:none;
 height:100px;
+resize:none;
 }
 
 /* ================= SUMMARY ================= */
-
 .summary{
-background:var(--glass);
-backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.7);
+backdrop-filter:blur(12px);
 padding:20px;
 border-radius:var(--radius);
-border:1px solid rgba(255,255,255,.3);
+box-shadow:var(--shadow);
 }
 
-.summary h3{
-margin-bottom:20px;
-}
-
-.summary-item{
+.item{
 display:flex;
 justify-content:space-between;
 margin:8px 0;
@@ -136,28 +118,30 @@ font-size:14px;
 }
 
 .total{
-font-size:18px;
-font-weight:600;
 margin-top:15px;
+font-size:18px;
+font-weight:700;
 display:flex;
 justify-content:space-between;
 }
 
 /* ================= BUTTON ================= */
-
 .btn{
 width:100%;
 padding:14px;
 margin-top:20px;
 border:none;
-border-radius:50px;
+border-radius:10px;
 background:var(--gold);
+font-weight:700;
 cursor:pointer;
-font-weight:600;
+}
+
+.btn:hover{
+opacity:0.9;
 }
 
 /* ================= EMPTY ================= */
-
 .empty{
 text-align:center;
 padding:40px;
@@ -168,22 +152,23 @@ padding:40px;
 
 <body>
 
+<!-- NAV -->
 <nav>
-<div class="logo">Kabini AgroGlobal</div>
-
-<ul>
-<li><a href="index.html">Home</a></li>
-<li><a href="products.html">Products</a></li>
-<li><a href="cart.html">Cart</a></li>
-<li><a href="checkout.html">Checkout</a></li>
-</ul>
+<div><strong>Kabini LTD</strong></div>
+<div>
+<a href="index.html">Home</a>
+<a href="product.html">Products</a>
+<a href="cart.html">Cart</a>
+<a href="order.html">Orders</a>
+</div>
 </nav>
 
+<!-- CONTENT -->
 <div class="container">
 
-<h1>Checkout</h1>
+<h2>Checkout</h2>
 
-<div class="checkout-grid">
+<div class="grid">
 
 <!-- FORM -->
 <div class="form-box">
@@ -206,14 +191,32 @@ padding:40px;
 <textarea id="address" placeholder="Delivery Address"></textarea>
 </div>
 
-<h2>Payment Method</h2>
+<h2>Shipping</h2>
 
 <div class="input">
-<input type="radio" name="pay" checked> Pay on Delivery
+<select id="location">
+<option value="Abuja">Abuja</option>
+<option value="Lagos">Lagos</option>
+<option value="Kano">Kano</option>
+<option value="Port Harcourt">Port Harcourt</option>
+</select>
 </div>
 
 <div class="input">
-<input type="radio" name="pay"> Card Payment (Demo)
+<select id="shipping">
+<option value="standard">Standard</option>
+<option value="express">Express</option>
+</select>
+</div>
+
+<h2>Payment</h2>
+
+<div class="input">
+<select id="payment">
+<option value="cod">Pay on Delivery</option>
+<option value="card">Card</option>
+<option value="transfer">Bank Transfer</option>
+</select>
 </div>
 
 <button class="btn" onclick="placeOrder()">Place Order</button>
@@ -225,7 +228,7 @@ padding:40px;
 
 <h3>Order Summary</h3>
 
-<div id="summaryItems"></div>
+<div id="items"></div>
 
 <div class="total">
 <span>Total</span>
@@ -235,131 +238,137 @@ padding:40px;
 </div>
 
 </div>
-
 </div>
 
 <script>
 
-/* ================= LOAD CART ================= */
+/* ================= CART ================= */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let cart = JSON.parse(localStorage.getItem("cart")) || []
+const itemsBox = document.getElementById("items");
+const totalBox = document.getElementById("total");
 
-const summaryContainer = document.getElementById("summaryItems")
+/* ================= RENDER ================= */
+function render() {
 
-function renderSummary(){
+itemsBox.innerHTML = "";
 
-if(cart.length === 0){
-summaryContainer.innerHTML = `<div class="empty">Cart is empty</div>`
-return
+let subtotal = 0;
+
+if (!cart || cart.length === 0) {
+itemsBox.innerHTML = "<p class='empty'>Cart is empty</p>";
+totalBox.innerText = "₦0";
+return;
 }
-
-let total = 0
 
 cart.forEach(item => {
 
-total += item.price * item.qty
+let price = Number(item.price) || 0;
+let qty = Number(item.qty) || 1;
 
-summaryContainer.innerHTML += `
+let total = price * qty;
+subtotal += total;
 
-<div class="summary-item">
-<span>${item.name} x${item.qty}</span>
-<span>₦${item.price * item.qty}</span>
+itemsBox.innerHTML += `
+<div class="item">
+<span>${item.name} x${qty}</span>
+<span>₦${total.toLocaleString()}</span>
 </div>
+`;
 
-`
+});
 
-})
+let shipping = 2000;
+let total = subtotal + shipping;
 
-document.getElementById("total").innerText = "₦" + (total + 2000)
+totalBox.innerText = "₦" + total.toLocaleString();
 
 }
 
-renderSummary()
+render();
 
-/* ================= PLACE ORDER ================= */
+/* ================= WHATSAPP ================= */
+function sendToWhatsApp(orderData) {
 
-function placeOrder(){
+let message = `🛒 *New Order from Kabini Global*\n\n`;
 
-let name = document.getElementById("name").value
-let email = document.getElementById("email").value
-let phone = document.getElementById("phone").value
-let address = document.getElementById("address").value
+message += `👤 *Customer Details*\n`;
+message += `Name: ${orderData.customer.name}\n`;
+message += `Email: ${orderData.customer.email}\n`;
+message += `Phone: ${orderData.customer.phone}\n`;
+message += `Address: ${orderData.customer.address}\n\n`;
 
-if(!name || !email || !phone || !address){
-alert("Please fill all fields")
-return
+message += `📦 *Order Items*\n`;
+
+let subtotal = 0;
+
+orderData.items.forEach(item => {
+
+let price = Number(item.price) || 0;
+let qty = Number(item.qty) || 1;
+let total = price * qty;
+
+subtotal += total;
+
+message += `- ${item.name} x${qty} = ₦${total.toLocaleString()}\n`;
+
+});
+
+let shipping = 2000;
+let total = subtotal + shipping;
+
+message += `\n🚚 Shipping: ₦${shipping.toLocaleString()}`;
+message += `\n💰 *Total: ₦${total.toLocaleString()}*`;
+message += `\n\n📅 Order Time: ${new Date().toLocaleString()}`;
+
+let phoneNumber = "2348107808968"; // <-- PUT YOUR NUMBER
+
+let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+window.open(url, "_blank");
+
 }
 
-if(cart.length === 0){
-alert("Cart is empty")
-return
+/* ================= ORDER ================= */
+function placeOrder() {
+
+if (!cart || cart.length === 0) {
+alert("Cart is empty");
+return;
 }
 
-/* CREATE ORDER */
+let name = document.getElementById("name").value.trim();
+let email = document.getElementById("email").value.trim();
+let phone = document.getElementById("phone").value.trim();
+let address = document.getElementById("address").value.trim();
+
+if (!name || !email || !phone || !address) {
+alert("Fill all fields");
+return;
+}
 
 let order = {
 id: Date.now(),
-customer:{name,email,phone,address},
+customer: { name, email, phone, address },
 items: cart,
 date: new Date().toLocaleString(),
-status:"Processing"
-}
+status: "Processing"
+};
 
-/* SAVE ORDERS */
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+orders.push(order);
 
-let orders = JSON.parse(localStorage.getItem("orders")) || []
-orders.push(order)
+localStorage.setItem("orders", JSON.stringify(orders));
+localStorage.removeItem("cart");
 
-localStorage.setItem("orders", JSON.stringify(orders))
+/* 👉 SEND TO WHATSAPP */
+sendToWhatsApp(order);
 
-/* CLEAR CART */
-
-localStorage.removeItem("cart")
-
-/* STORE LAST ORDER */
-
-localStorage.setItem("lastOrder", JSON.stringify(order))
-
-/* REDIRECT */
-
-window.location.href = "receipt.html"
+alert("Redirecting to WhatsApp...");
 
 }
 
 </script>
-<select id="paymentMethod">
-  <option value="card">Card</option>
-  <option value="bank">Bank Transfer</option>
-  <option value="ussd">USSD</option>
-  <option value="wallet">Wallet</option>
-</select>
 
-<div id="paymentDetails"></div>
-
-<p>Subtotal: <span id="subtotal"></span></p>
-<p>Shipping: <span id="shippingFee"></span></p>
-<p>Payment Fee: <span id="paymentFee"></span></p>
-<h2>Total: <span id="grandTotal"></span></h2>
-
-<button id="payBtn" class="btn">Pay Now</button>
-<script src="shippingCalculator.js"></script>
-<select id="shippingLocation">
-  <option>Abuja</option>
-  <option>Lagos</option>
-  <option>Port Harcourt</option>
-  <option>Kano</option>
-</select>
-
-<select id="deliveryType">
-  <option value="standard">Standard</option>
-  <option value="express">Express</option>
-</select>
-
-<label>
-  <input type="checkbox" id="international"> International Delivery
-</label>
-
-<h3>Shipping Cost: <span id="shippingCost"></span></h3>
-<p>Delivery Time: <span id="deliveryTime"></span></p>
 </body>
 </html>
